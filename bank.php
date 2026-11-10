@@ -10,7 +10,7 @@ class Bank {
         return $this->balance ; 
     }
 
-    public function setbalance(int $newbalance) {
+    public function setbalance(float $newbalance) {
         $this->balance = $newbalance ; 
     }
 }

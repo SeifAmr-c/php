@@ -1,8 +1,8 @@
 <?php 
 
 class Bank { 
-    private  int $balance ; 
-    public function __construct( int $balance) {
+    private  float $balance ; 
+    public function __construct( float $balance) {
         $this-> balance = $balance ;  
     }
     

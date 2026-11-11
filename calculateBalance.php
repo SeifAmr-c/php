@@ -2,11 +2,12 @@
 
 require_once 'calculateBalanceInterface.php';
 require_once 'hasBalance.php';
+require_once 'taxInterface.php' ;
 
-class CalculateBalance implements CalculateBalanceInterface {
+class CalculateBalance implements CalculateBalanceInterface{
 
 
-    public function __construct(private HasBalance $balance) {
+    public function __construct(private HasBalance&TaxInterface $balance) {
     }
 
     public function calculateBalance(): float {

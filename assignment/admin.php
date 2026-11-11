@@ -7,6 +7,6 @@ class admin extends User{
     }
 
     public function sayHello() {
-        return "Hello admin, ".$this->username() ; 
+        return "Hello admin, ".$this->setusername() ; 
     }
 }

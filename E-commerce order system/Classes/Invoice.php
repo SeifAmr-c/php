@@ -18,6 +18,6 @@ class Invoice implements InvoiceInterface {
     #[Override]
     public function getInvoiceNumber()
     {
-        return 'The invoice number is '.$this->invoiceNumber ; 
+        return $this->invoiceNumber ; 
     }
 }

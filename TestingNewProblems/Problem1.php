@@ -1,29 +1,17 @@
 <?php
+$Users = [
+    [
+    'name' => 'Ahmed Mohamed',
+    'Email' => 'Ahmed@gmail.com',
+    'Password'=>password_hash('Ahmed123@',PASSWORD_DEFAULT)
+    ],
+    [
+    'name' => 'Khaled Mohamed',
+    'Email' => 'Khaled@gmail.com',
+    'Password'=>password_hash('khaled123@',PASSWORD_DEFAULT)
+    ]
+] ; 
 
-
-$name = "Ahmed Mohamed";
-$email = "ahmed@gmail.com";
-$password = "Ahmed1234";
-$confirmPassword = "Ahmed123"; 
-$isValid = TRUE ; 
-
-if(empty(trim($name))) {
-    $isValid = FALSE ; 
-    echo 'Please enter a valid name' ; 
-}
-if(!filter_var($email,FILTER_VALIDATE_EMAIL)) {
-    $isValid = FALSE ; 
-    echo 'Please enter a valid email' ; 
-} 
-if(strlen($password) < 8 ) { 
-    $isValid = FALSE ; 
-    echo 'Please enter a password more than 8 characters' ; 
-}
-if ($password !== $confirmPassword) {
-    $isValid = FALSE ; 
-    echo 'The password do not match' ; 
-}
-if($isValid) {
-    $hasshedPassword = password_hash($password,PASSWORD_DEFAULT) ; 
-    echo $hasshedPassword ; 
+foreach($Users as $user) {
+echo $user['name'].'<br>'.$user['Email'];
 }

@@ -1,4 +1,5 @@
 <?php
+
 $Users = [
     [
     'name' => 'Ahmed Mohamed',
@@ -10,8 +11,34 @@ $Users = [
     'Email' => 'Khaled@gmail.com',
     'Password'=>password_hash('khaled123@',PASSWORD_DEFAULT)
     ]
-] ; 
+] ;
 
-foreach($Users as $user) {
-echo $user['name'].'<br>'.$user['Email'];
+function findUserByEmail(string $email){
+    global $Users ; 
+
+    foreach($Users as $user)
+        {
+        if($email === $user['Email']) {
+            return $user; 
+        }
+        
+        }
+        return null ; 
 }
+
+function isEmailRegistered(string $email): bool{
+
+    $user = findUserByEmail($email) ; 
+    if($user) {
+        return TRUE ; 
+    }
+    else{
+        return FALSE ; 
+    }
+
+}
+
+
+var_dump(isEmailRegistered('Ahmed@gmail.com')); // true
+
+var_dump(isEmailRegistered('Seif@gmail.com')); // false

@@ -1,1 +1,29 @@
 <?php
+
+require_once __DIR__ . '/../src/Entities/User.php';
+require_once __DIR__ . '/../src/Interfaces/UserRepositoryInterface.php';
+require_once __DIR__ . '/../src/Repositories/InMemoryUserRepository.php';
+
+use PHPUnit\Framework\TestCase;
+
+
+class InMemoryUserRepositoryTest extends TestCase {
+    public function testItCanSaveTheUser():void {
+        $Repository = new InMemoryUserRepository() ; 
+        $User = new User('Ahmed','Ahmed@gmail.com','Ahmed123@') ; 
+        $Repository->save($User) ; 
+        $NewUser = $Repository->FindByEmail($User->GetEmail()) ;
+        $this->assertInstanceOf(User::class,$NewUser) ; 
+        $this->assertSame('Ahmed@gmail.com', $NewUser->GetEmail());
+    }
+
+    public function testCheckIfEmailExists():Void{
+        $Repository = new InMemoryUserRepository() ; 
+        $User = new User('Ahmed','Ahmed@gmail.com','Ahmed123@') ; 
+        $Repository->save($User) ; 
+        $Result = $Repository->ExistsByEmail($User->GetEmail()) ;
+        $ResultFalse = $Repository->ExistsByEmail('Khaled@gmail.com') ;
+        $this->assertTrue($Result); 
+        $this->assertFalse($ResultFalse); 
+    }
+}

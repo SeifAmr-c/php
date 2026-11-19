@@ -8,7 +8,7 @@ class InMemoryUserRepository implements UserRepositoryInterface {
         $this->Users[] = $User ; 
     }
     
-    public function FindByEmail(string $Email): ?User
+    public function FindByEmail(string $Email): ?User // return the user object if the email was found . 
     {
         foreach($this->Users as $User){
             if($User->GetEmail() === $Email){

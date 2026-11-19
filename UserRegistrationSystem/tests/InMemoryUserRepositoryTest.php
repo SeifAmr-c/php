@@ -13,8 +13,10 @@ class InMemoryUserRepositoryTest extends TestCase {
         $User = new User('Ahmed','Ahmed@gmail.com','Ahmed123@') ; 
         $Repository->save($User) ; 
         $NewUser = $Repository->FindByEmail($User->GetEmail()) ;
+        $NewUserNull = $Repository->FindByEmail('Khaled@gmail.com') ;
         $this->assertInstanceOf(User::class,$NewUser) ; 
         $this->assertSame('Ahmed@gmail.com', $NewUser->GetEmail());
+        $this->assertNull($NewUserNull) ; 
     }
 
     public function testCheckIfEmailExists():Void{

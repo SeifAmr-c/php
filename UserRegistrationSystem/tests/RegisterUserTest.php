@@ -45,8 +45,6 @@ class RegisterUserTest extends TestCase {
             ->method('save') ;
         $Result = $Register->Register('Ahmed','Ahmed@gmail.com','Ahmed123@','Ahmed123@'); 
         $this->assertSame('Email address is already registered',$Result) ; 
-        // $this->assertSame('Ahmed@gmail.com',$Result->GetEmail()) ;
-        // $this->assertTrue(password_verify('Ahmed123@',$Result->GetHashedPassword()));
 
     }
 
@@ -117,6 +115,7 @@ class RegisterUserTest extends TestCase {
         $Result = $Register->Register('Khaled','','Khaled123@','Khaled123@') ; 
         $this->assertSame('Please enter a valid email in order to continue',$Result) ; 
     }
+    
     public function testUserRegistrationWithUnvalidEmail(){
         $Repository = $this->createMock(UserRepositoryInterface::class) ; 
         $Register = new RegisterUser($Repository) ; 

@@ -1,6 +1,6 @@
 <?php
-require_once '../Entities/Product.php'; // to create a new product
-require_once '../Interfaces/ProductRepositoryInterface.php'; // to access the interface that is gonne be implemented
+require_once __DIR__ . '/../Entities/Product.php'; // to create a new product
+require_once __DIR__ . '/../Interfaces/ProductRepositoryInterface.php'; // to access the interface that is gonne be implemented
 class AddProductService {
 
 

@@ -1,6 +1,7 @@
 <?php
 
-require_once '../Entities/Product.php' ; // because i need to access the getId() function in order to save the products in the array as key and value pairs
+require_once __DIR__ . '/../Entities/Product.php' ;
+require_once __DIR__ . '/../Interfaces/ProductRepositoryInterface.php' ; // because i need to access the getId() function in order to save the products in the array as key and value pairs
 class InMemoryProductRepository implements ProductRepositoryInterface {
     private array $products = [] ; 
 

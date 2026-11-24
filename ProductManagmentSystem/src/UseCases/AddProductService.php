@@ -34,6 +34,7 @@ class AddProductService {
          // what will happen if all the validation passed
         $newProduct = new Product($id,$name,$price); 
         $this->Repository->save($newProduct); 
+        return $newProduct; 
     }
 
     

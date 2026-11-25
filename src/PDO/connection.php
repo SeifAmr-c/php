@@ -18,7 +18,7 @@ function loadEnv(string $path): array
     return $env;
 }
 
-$env = loadEnv(__DIR__ . '/.env');
+$env = loadEnv(__DIR__ . '/../../.env');
 
 $dsn  = "mysql:host={$env['DB_HOST']};dbname={$env['DB_NAME']};charset=utf8mb4";
 $user = $env['DB_USER'];

@@ -1,8 +1,8 @@
 <?php
 
-require_once __DIR__ . '/../src/Entities/Product.php';
-require_once __DIR__ . '/../src/Interfaces/ProductRepositoryInterface.php';
-require_once __DIR__ . '/../src/UseCases/AddProductService.php';
+require_once __DIR__ . '/../../src/ProductManagmentSystem/src/Entities/Product.php';
+require_once __DIR__ . '/../../src/ProductManagmentSystem/src/Interfaces/ProductRepositoryInterface.php';
+require_once __DIR__ . '/../../src/ProductManagmentSystem/src/UseCases/AddProductService.php';
 
 use PHPUnit\Framework\TestCase;
 

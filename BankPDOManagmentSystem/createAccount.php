@@ -22,7 +22,7 @@ $balance = trim($_POST['balance']);
 $select = $pdo->prepare('SELECT * FROM accounts WHERE owner =:owner');    
 
 $select->execute([
-    ':owner'=>$_POST['owner']
+    ':owner'=>$owner
 ]);
 
 $existing = $select->fetch();

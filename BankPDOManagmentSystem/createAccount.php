@@ -13,12 +13,29 @@ if(empty(trim($_POST['owner']))){
     echo  'The owner place holder can not be empty' ; 
     exit();
     }; 
+//name and balance spaces validation
+$owner = trim($_POST['owner']);
+
+$balance = trim($_POST['balance']);   
+
+// select statement to check for duplicate
+$select = $pdo->prepare('SELECT * FROM accounts WHERE owner =:owner');    
+
+$select->execute([
+    ':owner'=>$_POST['owner']
+]);
+
+$existing = $select->fetch();
+if($existing){
+    echo 'The owner name alreay exists please login instead';
+    exit(); 
+};
 // preparing the statment
 $stmt  = $pdo->prepare('INSERT INTO accounts (owner,balance) VALUES (:owner,:balance)');
 //exucting the statement
 $result = $stmt->execute([
-    ':owner' => trim($_POST['owner']),
-    ':balance'=>$_POST['balance']
+    ':owner' => $owner,
+    ':balance'=>$balance
 ]);
 // checking if succeeded or not
 if($result){

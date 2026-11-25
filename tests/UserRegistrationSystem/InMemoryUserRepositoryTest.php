@@ -1,8 +1,8 @@
 <?php
 
-require_once __DIR__ . '/../src/Entities/User.php';
-require_once __DIR__ . '/../src/Interfaces/UserRepositoryInterface.php';
-require_once __DIR__ . '/../src/Repositories/InMemoryUserRepository.php';
+require_once __DIR__ . '/../../UserRegistrationSystem/src/Entities/User.php';
+require_once __DIR__ . '/../../UserRegistrationSystem/src/Interfaces/UserRepositoryInterface.php';
+require_once __DIR__ . '/../../UserRegistrationSystem/src/Repositories/InMemoryUserRepository.php';
 
 use PHPUnit\Framework\TestCase;
 

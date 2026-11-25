@@ -1,12 +1,13 @@
 <?php
 
-require_once __DIR__ . '/../src/Entities/Product.php';
-require_once __DIR__ . '/../src/Interfaces/ProductRepositoryInterface.php';
-require_once __DIR__ . '/../src/Repositories/InMemoryProductRepository.php';
+require_once __DIR__ . '/../../ProductManagmentSystem/src/Entities/Product.php';
+require_once __DIR__ . '/../../ProductManagmentSystem/src/Interfaces/ProductRepositoryInterface.php';
+require_once __DIR__ . '/../../ProductManagmentSystem/src/Repositories/InMemoryProductRepository.php';
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-
+#[CoversClass(InMemoryProductRepository::class)]
 class InMemoryProductRepositoryTest extends TestCase {
     public function testIfItCanSaveProductIfIdExists(){
         $repository = new InMemoryProductRepository(); 

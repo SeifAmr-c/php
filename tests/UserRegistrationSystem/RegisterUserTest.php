@@ -1,12 +1,14 @@
 <?php
 
-require_once __DIR__ . '/../src/Entities/User.php';
-require_once __DIR__ . '/../src/Interfaces/UserRepositoryInterface.php';
-require_once __DIR__ . '/../src/UseCases/RegisterUser.php';
+require_once __DIR__ . '/../../UserRegistrationSystem/src/Entities/User.php';
+require_once __DIR__ . '/../../UserRegistrationSystem/src/Interfaces/UserRepositoryInterface.php';
+require_once __DIR__ . '/../../UserRegistrationSystem/src/UseCases/RegisterUser.php';
 
+use PHPUnit\Framework\Attributes\TestDox;
 use PHPUnit\Framework\TestCase;
 
 class RegisterUserTest extends TestCase {
+    
     public function testRegisterNewUser() {
 
         $Repository = $this->createMock(UserRepositoryInterface::class); // creating a mock that applies user repo interface . 

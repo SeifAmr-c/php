@@ -1,8 +1,8 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-require_once __DIR__ . '/../Interfaces/paymentInterface.php';
-require_once __DIR__ . '/../Classes/creditCardPayment.php';
+require_once __DIR__ . '/../../E-commerce order system/Interfaces/paymentInterface.php';
+require_once __DIR__ . '/../../E-commerce order system/Classes/creditCardPayment.php';
 
 class CreditCardPaymentTest extends TestCase {
 

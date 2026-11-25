@@ -1,8 +1,8 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-require_once __DIR__ . '/../Interfaces/invoiceInterface.php';
-require_once __DIR__ . '/../Classes/Invoice.php';
+require_once __DIR__ . '/../../E-commerce order system/Interfaces/invoiceInterface.php';
+require_once __DIR__ . '/../../E-commerce order system/Classes/Invoice.php';
 
 class InoviceTest extends TestCase {
 

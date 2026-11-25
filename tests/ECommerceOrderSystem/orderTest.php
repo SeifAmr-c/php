@@ -2,8 +2,8 @@
 
 use PHPUnit\Framework\TestCase;
 
-require_once __DIR__ . '/../../E-commerce order system/Interfaces/orderInterface.php';
-require_once __DIR__ . '/../../E-commerce order system/Classes/order.php';
+require_once __DIR__ . '/../../src/E-commerce order system/Interfaces/orderInterface.php';
+require_once __DIR__ . '/../../src/E-commerce order system/Classes/order.php';
 
 class OrderTest extends TestCase
 {

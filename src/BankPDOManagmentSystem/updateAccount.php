@@ -3,7 +3,7 @@ require_once __DIR__ . '/../PDO/connection.php'; // gives us the $pdo object con
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 //validation for the id and balance
-if(!is_numeric($_POST['id']) || $_POST['id'] < 0){
+if(!filter_var($_POST['id'], FILTER_VALIDATE_INT)|| $_POST['id'] < 0){
     echo 'Please enter a valid in order to continue';
     exit();
 }

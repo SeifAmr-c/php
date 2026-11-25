@@ -1,8 +1,8 @@
 <?php
 
-require_once __DIR__ . '/../../ProductManagmentSystem/src/Entities/Product.php';
-require_once __DIR__ . '/../../ProductManagmentSystem/src/Interfaces/ProductRepositoryInterface.php';
-require_once __DIR__ . '/../../ProductManagmentSystem/src/Repositories/InMemoryProductRepository.php';
+require_once __DIR__ . '/../../src/ProductManagmentSystem/src/Entities/Product.php';
+require_once __DIR__ . '/../../src/ProductManagmentSystem/src/Interfaces/ProductRepositoryInterface.php';
+require_once __DIR__ . '/../../src/ProductManagmentSystem/src/Repositories/InMemoryProductRepository.php';
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;

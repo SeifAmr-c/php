@@ -1,8 +1,8 @@
 <?php
 
-require_once __DIR__ . '/../../UserRegistrationSystem/src/Entities/User.php';
-require_once __DIR__ . '/../../UserRegistrationSystem/src/Interfaces/UserRepositoryInterface.php';
-require_once __DIR__ . '/../../UserRegistrationSystem/src/UseCases/RegisterUser.php';
+require_once __DIR__ . '/../../src/UserRegistrationSystem/src/Entities/User.php';
+require_once __DIR__ . '/../../src/UserRegistrationSystem/src/Interfaces/UserRepositoryInterface.php';
+require_once __DIR__ . '/../../src/UserRegistrationSystem/src/UseCases/RegisterUser.php';
 
 use PHPUnit\Framework\Attributes\TestDox;
 use PHPUnit\Framework\TestCase;

@@ -2,10 +2,27 @@
 require_once __DIR__ . '/../PDO/connection.php'; // gives us the $pdo object connected to the database
 
 // test IDs and balance
-$sender = 1;
-$receiver = 2;
-$amount = 6000;
+$sender = 2;
+$receiver = 1;
+$amount = 1000;
 
+// validation the inputs entered
+function validateTransfer(float $amount,int $id){
+    if($amount <= 0){
+        throw new InvalidArgumentException('The amount must be greater than 0');
+    }
+    if($id <= 0){
+        throw new OutOfRangeException('Please enter a valid id in order to continue');
+    }
+}
+try{
+// calling the function to check if the trasnfer is valid
+validateTransfer($amount, $sender);
+validateTransfer($amount, $receiver);
+// checking if the sender is the same as the receiver
+if ($sender === $receiver) {
+    throw new InvalidArgumentException('Sender and receiver must be different');
+}
 // begin of the transaction
 $pdo->beginTransaction();
 // query statement for the sender and cheking if the sender has enough balance
@@ -19,23 +36,32 @@ $stmtSend->execute([
 ]);
 // cheking if there is data returned before the transaction
 if($stmtSend->rowCount() === 0){
-echo 'there is not enough suffecient balance';
-$pdo->rollBack();
-exit();
+throw new Exception('there is not enough balance, or the user does not exist');
 }
 // sending the receiver data
 $stmtReceive->execute([
     ':amount' => $amount,
     ':id'=>$receiver
 ]);
-// checking if the receiver exists
-if($stmtReceive->rowCount() === 1){
-    $pdo->commit(); 
-    echo 'the amount has been received';
-}
+
 // if not exists the transaction does not go through and the amount is reversed, there must be a valid id
 if($stmtReceive->rowCount() === 0){
-    $pdo->rollBack();
-    echo 'there is no user with this id';
-    exit();
+throw new Exception('Receiver does not exist');
 }
+
+$pdo->commit(); 
+echo 'The amount has been sent';
+
+
+}catch(Throwable $e){
+    // Check whether a transaction is still active
+    if ($pdo->inTransaction()) {
+        $pdo->rollBack();
+    }
+
+    echo 'Transfer failed: ' . $e->getMessage();
+}finally{
+    echo 'Validation process finished';
+}
+
+

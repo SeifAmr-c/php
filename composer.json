@@ -8,5 +8,10 @@
 
     "scripts": {
         "test": "phpunit --testdox tests"
+    },
+    "autoload": {
+    "psr-4": {
+        "App\\": "src/Bank_app/"
     }
+}
 }

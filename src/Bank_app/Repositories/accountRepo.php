@@ -3,6 +3,7 @@ namespace App\Repositories;
 
 use App\Interfaces\AccountRepoInterface;
 use App\Entities\Account;
+use Override;
 use PDO;
 
 class AccountRepo implements AccountRepoInterface{
@@ -30,4 +31,20 @@ class AccountRepo implements AccountRepoInterface{
                 (float)$result['balance']
                 );
     }    
+
+
+    public function retreiveAllAccounts(): array
+    {
+        $stmt = $this->pdo->prepare('SELECT * FROM accounts');
+        $stmt->execute(); 
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $accounts= [];
+        
+        foreach($result as $account){
+            $accounts[] =  new Account($account['id'],$account['owner'],$account['balance']); 
+        };
+
+        return $accounts;
+
+    }
 }

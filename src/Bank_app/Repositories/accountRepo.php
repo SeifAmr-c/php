@@ -3,7 +3,6 @@ namespace App\Repositories;
 
 use App\Interfaces\AccountRepoInterface;
 use App\Entities\Account;
-use Override;
 use PDO;
 
 class AccountRepo implements AccountRepoInterface{
@@ -41,7 +40,11 @@ class AccountRepo implements AccountRepoInterface{
         $accounts= [];  // declaring empty array to save the account objects 
         
         foreach($result as $account){
-            $accounts[] =  new Account($account['id'],$account['owner'],$account['balance']); 
+            $accounts[] =  new Account(
+                (int)$account['id'],
+                (string)$account['owner'],
+                (float)$account['balance']
+                ); 
         };
 
         return $accounts;
@@ -61,10 +64,17 @@ class AccountRepo implements AccountRepoInterface{
     }
 
     public function updateBalance(int $id,float $balance):bool{
-        $stmt = $this->pdo->prepare('UPDATE accounts SET balance += :balance WHERE id =:id');
+        $stmt = $this->pdo->prepare('UPDATE accounts SET balance = :balance WHERE id =:id');
         return $stmt->execute([
             ':id' => $id,
             ':balance' => $balance
+        ]);
+    }
+
+    public function deleteAccount(int $id): bool{
+        $stmt = $this->pdo->prepare('DELETE FROM accounts WHERE id = :id');
+        return $stmt->execute([
+            ':id'=>$id
         ]);
     }
 }

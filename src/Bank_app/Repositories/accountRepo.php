@@ -38,7 +38,7 @@ class AccountRepo implements AccountRepoInterface{
         $stmt = $this->pdo->prepare('SELECT * FROM accounts');
         $stmt->execute(); 
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        $accounts= [];
+        $accounts= [];  // declaring empty array to save the account objects 
         
         foreach($result as $account){
             $accounts[] =  new Account($account['id'],$account['owner'],$account['balance']); 
@@ -46,5 +46,18 @@ class AccountRepo implements AccountRepoInterface{
 
         return $accounts;
 
+    }
+
+
+    #[Override]
+    public function createNewAccount(Account $account): bool
+    {
+        $owner = $account->getOwner();
+        $balance = $account->getBalance();
+        $stmt = $this->pdo->prepare('INSERT INTO accounts (owner,balance) VALUES (:owner,:balance)'); 
+        return $stmt->execute([
+            ':owner' => $owner,
+            ':balance'=> $balance
+        ]);
     }
 }

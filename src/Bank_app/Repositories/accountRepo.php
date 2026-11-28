@@ -49,7 +49,6 @@ class AccountRepo implements AccountRepoInterface{
     }
 
 
-    #[Override]
     public function createNewAccount(Account $account): bool
     {
         $owner = $account->getOwner();
@@ -58,6 +57,14 @@ class AccountRepo implements AccountRepoInterface{
         return $stmt->execute([
             ':owner' => $owner,
             ':balance'=> $balance
+        ]);
+    }
+
+    public function updateBalance(int $id,float $balance):bool{
+        $stmt = $this->pdo->prepare('UPDATE accounts SET balance += :balance WHERE id =:id');
+        return $stmt->execute([
+            ':id' => $id,
+            ':balance' => $balance
         ]);
     }
 }
